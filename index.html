@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystical Tarot - 신비로운 타로의 세계</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 별빛 배경 효과 -->
+    <div class="stars-container">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- 네비게이션 -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">MYSTICAL TAROT</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#reading">타로 보기</a></li>
+                <li><a href="#cards">카드 소개</a></li>
+                <li><a href="#about">소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-decoration">✧</div>
+            <h1 class="hero-title">
+                <span class="title-line">당신의 운명을</span>
+                <span class="title-line title-highlight">별빛 속에서</span>
+                <span class="title-line">찾아보세요</span>
+            </h1>
+            <p class="hero-subtitle">
+                우주의 신비로운 에너지가 당신의 미래를 안내합니다
+            </p>
+            <button class="cta-button" onclick="scrollToReading()">
+                <span>타로 리딩 시작하기</span>
+                <span class="button-glow"></span>
+            </button>
+        </div>
+        <div class="hero-orb"></div>
+    </section>
+
+    <!-- 타로 리딩 섹션 -->
+    <section id="reading" class="reading-section">
+        <div class="section-header">
+            <h2 class="section-title">타로 리딩</h2>
+            <p class="section-subtitle">마음을 집중하고 카드를 선택하세요</p>
+        </div>
+
+        <!-- 카테고리 선택 -->
+        <div class="category-selector">
+            <button class="category-btn active" data-category="love">
+                <span class="category-icon">♥</span>
+                <span>연애운</span>
+            </button>
+            <button class="category-btn" data-category="career">
+                <span class="category-icon">★</span>
+                <span>사업운</span>
+            </button>
+            <button class="category-btn" data-category="wealth">
+                <span class="category-icon">◆</span>
+                <span>재물운</span>
+            </button>
+            <button class="category-btn" data-category="health">
+                <span class="category-icon">✚</span>
+                <span>건강운</span>
+            </button>
+            <button class="category-btn" data-category="daily">
+                <span class="category-icon">☾</span>
+                <span>오늘의 운세</span>
+            </button>
+        </div>
+
+        <!-- 카드 덱 -->
+        <div class="card-deck" id="cardDeck">
+            <!-- 카드들은 JavaScript로 생성 -->
+        </div>
+
+        <!-- 선택된 카드 결과 -->
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <div class="result-card">
+                <div class="result-header">
+                    <h3>당신의 카드</h3>
+                    <button class="close-result" onclick="closeResult()">✕</button>
+                </div>
+                <div class="result-content">
+                    <div class="selected-card-display">
+                        <div class="card-image-large" id="selectedCardImage"></div>
+                        <h4 class="card-name" id="selectedCardName"></h4>
+                    </div>
+                    <div class="result-interpretation">
+                        <h5>해석</h5>
+                        <p id="interpretationText"></p>
+                        <div class="result-keywords">
+                            <span class="keyword">희망</span>
+                            <span class="keyword">변화</span>
+                            <span class="keyword">기회</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="retry-button" onclick="resetReading()">
+                    <span>다시 보기</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카드 소개 섹션 -->
+    <section id="cards" class="cards-intro">
+        <div class="section-header">
+            <h2 class="section-title">타로 카드 소개</h2>
+            <p class="section-subtitle">메이저 아르카나 22장의 신비</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card-info-item">
+                <div class="card-info-icon">0</div>
+                <h4>The Fool</h4>
+                <p>새로운 시작, 순수함, 자유</p>
+            </div>
+            <div class="card-info-item">
+                <div class="card-info-icon">I</div>
+                <h4>The Magician</h4>
+                <p>창조, 의지, 재능</p>
+            </div>
+            <div class="card-info-item">
+                <div class="card-info-icon">II</div>
+                <h4>The High Priestess</h4>
+                <p>직관, 신비, 지혜</p>
+            </div>
+            <div class="card-info-item">
+                <div class="card-info-icon">III</div>
+                <h4>The Empress</h4>
+                <p>풍요, 모성, 자연</p>
+            </div>
+            <div class="card-info-item">
+                <div class="card-info-icon">IV</div>
+                <h4>The Emperor</h4>
+                <p>권위, 안정, 리더십</p>
+            </div>
+            <div class="card-info-item">
+                <div class="card-info-icon">V</div>
+                <h4>The Hierophant</h4>
+                <p>전통, 교육, 영성</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title">타로의 신비</h2>
+                <p>타로 카드는 14세기부터 전해 내려오는 신비로운 점술 도구입니다. 78장의 카드 각각은 인생의 여정과 우주의 진리를 상징하며, 당신의 잠재의식과 교감하여 숨겨진 진실을 드러냅니다.</p>
+                <p>우리의 타로 리딩은 전통적인 해석과 현대적 감각을 결합하여, 당신의 삶에 실질적인 통찰을 제공합니다.</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✦</span>
+                        <span>정확한 해석</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✦</span>
+                        <span>개인 맞춤형 리딩</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✦</span>
+                        <span>24시간 이용 가능</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="mystical-circle">
+                    <div class="circle-ring"></div>
+                    <div class="circle-ring"></div>
+                    <div class="circle-ring"></div>
+                    <div class="circle-center">✧</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon">✦</span>
+                <span>MYSTICAL TAROT</span>
+            </div>
+            <p class="footer-text">
+                타로는 자기 탐색과 성찰의 도구입니다. 
+                최종 결정은 항상 당신의 자유의지에 달려있습니다.
+            </p>
+            <div class="footer-links">
+                <a href="#">이용약관</a>
+                <span>•</span>
+                <a href="#">개인정보처리방침</a>
+                <span>•</span>
+                <a href="#">문의하기</a>
+            </div>
+            <p class="copyright">© 2025 Mystical Tarot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
