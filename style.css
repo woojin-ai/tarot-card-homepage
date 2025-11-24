@@ -27,6 +27,9 @@
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
+    
+    /* Layout */
+    --ad-width: 200px;
 }
 
 /* ====================================
@@ -50,6 +53,56 @@ body {
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
+}
+
+/* ====================================
+   왼쪽 세로형 광고
+   ==================================== */
+.left-ad-container {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    opacity: 0;
+    animation: fadeInAd 1s ease-out 0.5s forwards;
+}
+
+.ad-wrapper {
+    position: relative;
+    padding: 15px;
+    background: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.2),
+        inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.ad-label {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.7rem;
+    color: var(--color-silver);
+    opacity: 0.5;
+    font-family: var(--font-heading);
+    letter-spacing: 0.1em;
+}
+
+@keyframes fadeInAd {
+    to {
+        opacity: 1;
+    }
+}
+
+/* ====================================
+   메인 콘텐츠 래퍼
+   ==================================== */
+.main-wrapper {
+    margin-left: var(--ad-width);
+    transition: margin-left 0.3s ease;
 }
 
 /* ====================================
@@ -925,6 +978,15 @@ body {
    Responsive Design
    ==================================== */
 @media (max-width: 1024px) {
+    /* 광고 숨김 */
+    .left-ad-container {
+        display: none;
+    }
+    
+    .main-wrapper {
+        margin-left: 0;
+    }
+    
     .hero-title {
         font-size: 4rem;
     }
@@ -935,6 +997,10 @@ body {
     
     .result-content {
         grid-template-columns: 1fr;
+    }
+    
+    .mystical-circle {
+        opacity: 0.1;
     }
 }
 
@@ -980,7 +1046,6 @@ body {
     }
     
     .mystical-circle {
-        width: 200px;
-        height: 200px;
+        display: none;
     }
 }
