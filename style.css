@@ -98,11 +98,25 @@ body {
 }
 
 /* ====================================
+   오른쪽 세로형 광고
+   ==================================== */
+.right-ad-container {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    opacity: 0;
+    animation: fadeInAd 1s ease-out 0.7s forwards;
+}
+
+/* ====================================
    메인 콘텐츠 래퍼
    ==================================== */
 .main-wrapper {
     margin-left: var(--ad-width);
-    transition: margin-left 0.3s ease;
+    margin-right: var(--ad-width);
+    transition: margin 0.3s ease;
 }
 
 /* ====================================
@@ -975,16 +989,164 @@ body {
 }
 
 /* ====================================
+   다른 운세 보기 섹션
+   ==================================== */
+.other-services {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.3), rgba(45, 27, 78, 0.2));
+    position: relative;
+    z-index: 1;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.service-card {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 26, 0.9));
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-star-white);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.service-card:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-silver);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-badge {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--gradient-gold);
+    color: var(--color-cosmic-black);
+    border-radius: 25px;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-badge {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* ====================================
+   푸터 관련 서비스
+   ==================================== */
+.footer-services {
+    margin: 2rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.footer-service-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-service-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-star-white);
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.footer-service-links a:hover {
+    color: var(--color-gold);
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+}
+
+.footer-service-links a span {
+    font-size: 1.2rem;
+}
+
+/* ====================================
    Responsive Design
    ==================================== */
 @media (max-width: 1024px) {
     /* 광고 숨김 */
-    .left-ad-container {
+    .left-ad-container,
+    .right-ad-container {
         display: none;
     }
     
     .main-wrapper {
         margin-left: 0;
+        margin-right: 0;
     }
     
     .hero-title {
@@ -1001,6 +1163,10 @@ body {
     
     .mystical-circle {
         opacity: 0.1;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1033,6 +1199,11 @@ body {
     .footer-links {
         flex-direction: column;
         gap: 0.75rem;
+    }
+    
+    .footer-service-links {
+        flex-direction: column;
+        gap: 1rem;
     }
 }
 
